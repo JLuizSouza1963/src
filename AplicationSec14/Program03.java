@@ -10,7 +10,7 @@ import EntitiesSec14.Reservation;
 public class Program03 {
 	
 	public static void main(String[] args) throws ParseException {
-		
+		/*Very bad solution*/
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		System.out.println("Nro.do quarto : ");
