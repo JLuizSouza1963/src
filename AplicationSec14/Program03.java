@@ -19,22 +19,33 @@ public class Program03 {
 		Date checkIn = sdf.parse(sc.next());
 		System.out.println("Data do check-out : ");
 		Date checkOut = sdf.parse(sc.next());
-		if(!checkOut.after(checkIn)) {
-			System.out.println("Erro na reserva, data do checkout tem que ser maior que o Checkin");
-		} 
+
+		if (!checkOut.after(checkIn)) {
+			System.out.println("CheckOut deve ser posterior ao Checkin");
+		}
 		else {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
-			System.out.println("Reserva " + reservation);
+			System.out.println("Reservation: " + reservation);
 			
-			System.out.println();
-			System.out.println("Entre com a date de atualização da reserva:");
+			System.out.println("");
+			System.out.println("Entre com a data da atualização da reserva");
 			System.out.println("Data do check-in : ");
 			checkIn = sdf.parse(sc.next());
 			System.out.println("Data do check-out : ");
 			checkOut = sdf.parse(sc.next());
-			reservation.updateDates(checkIn, checkOut);
-			System.out.println("Reserva " + reservation);
 			
+			Date now = new Date();
+			if (checkIn.before(now) || checkOut.before(now)) {
+				System.out.println("Erro na reserva para atualização as datas devem ser futuras");
+			}
+			else if (!checkOut.after(checkIn)) {
+				System.out.println("CheckOut deve ser posterior ao Checkin");
+			}
+			else {
+				reservation.updateDates(checkIn, checkOut);
+				System.out.println("Reservation: " + reservation);
+			}
 		}
+			
 	}
 }
