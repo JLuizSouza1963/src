@@ -17,7 +17,10 @@ public class Reservation {
 	public Reservation() {
 	}
 
-	public Reservation(Integer roomNumber, Date checkin, Date checkout) {
+	public Reservation(Integer roomNumber, Date checkin, Date checkout) throws DomainException {
+		if (!checkout.after(checkin)) {
+			throw new DomainException("CheckOut deve ser posterior ao Checkin");
+		}
 		this.roomNumber = roomNumber;
 		this.checkin = checkin;
 		this.checkout = checkout;
